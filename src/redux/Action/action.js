@@ -4,7 +4,7 @@ export const addToCart = (val) => (dispatch) => {
      val: val,
 });
 };
-
+ 
 export const removeToCart = (Id)=>(dispatch)=> {
     return dispatch({
         type : 'REMOVE_TO_CART',
@@ -14,8 +14,8 @@ export const removeToCart = (Id)=>(dispatch)=> {
 
 export const updateToCart = (Id)=>{
     console.log("azam", Id)
-//     return {
-//         type : 'UPDATE_TO_CART',
-//         data: Id,
-//     }
+    return {
+        type : 'UPDATE_TO_CART',
+        data: Id,
+    }
 };

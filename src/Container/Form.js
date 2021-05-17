@@ -8,7 +8,8 @@ class Form extends Component {
     this.state = {
       Name: "",
       Id: "",
-      Update: false
+      Update: false,
+      UpdateData : { } 
     };
   }
 
@@ -20,10 +21,10 @@ class Form extends Component {
       this.props.removeToCart(Id);
   }
   editHandler = (data)=>{
-    this.setState ({Name: data.Name , Id: data.Id, Update:true})
+    this.setState ({Name: data.Name , Id: data.Id, Update:true, UpdateData : data })
   }
-  UpdateHandler = (Id) => {
-    this.props.updateToCart(Id)
+  UpdateHandler = (data) => {
+    this.props.updateToCart(data)
   }
 
   render() {
@@ -49,7 +50,7 @@ class Form extends Component {
           <br />
           <br />
           {this.state.Update === true? 
-          <button type = 'button' onClick ={()=>this.props.UpdateHandler(this.props.data)}>Update</button>:
+          <button type = 'button' onClick ={()=>this.props.UpdateHandler(this.state.UpdateData)}>Update</button>:
           <button type='button' onClick={() => this.handleClick()}>Submit</button>
           }
         </form>
