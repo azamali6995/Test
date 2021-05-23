@@ -15,14 +15,13 @@ export default function formItem (state= initialState, action) {
             formData : filterArray
         }
     case 'UPDATE_TO_CART' :
-        let fillArray = state.formData.filter(data=> data.Id !== action.data)
+        const { Id } = action.data;
+        let findIdx = state.formData.findIndex(obj=> obj.Id == Id)
+        const stateUdated = {...state};
+        stateUdated.formData[findIdx] = action.data;
         return {
-            ...state,
-            formData : fillArray
+            ...state
         }   
-
-
-
 
     }
 }

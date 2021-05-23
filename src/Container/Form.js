@@ -24,13 +24,23 @@ class Form extends Component {
     this.setState ({Name: data.Name , Id: data.Id, Update:true, UpdateData : data })
   }
   UpdateHandler = (data) => {
-    this.props.updateToCart(data)
+    const data1 = {Name: this.state.Name, Id: this.state.Id}
+    this.props.UpdateHandler(data1)
   }
 
   render() {
     return (
       <div>
         <form>
+        <input    
+            type="text"
+            name="Id"
+            value={this.state.Id}
+            placeholder="Enter Id"
+            onChange={(e) => this.setState({ Id: e.target.value })}
+          />
+          <br />
+          <br />
           <input
             type="text"
             name="Name"
@@ -40,17 +50,10 @@ class Form extends Component {
           />
           <br />
           <br />
-          <input    
-            type="text"
-            name="Id"
-            value={this.state.Id}
-            placeholder="Enter Password"
-            onChange={(e) => this.setState({ Id: e.target.value })}
-          />
           <br />
           <br />
           {this.state.Update === true? 
-          <button type = 'button' onClick ={()=>this.props.UpdateHandler(this.state.UpdateData)}>Update</button>:
+          <button type = 'button' onClick ={()=> this.UpdateHandler(this.state.UpdateData)}>Update</button>:
           <button type='button' onClick={() => this.handleClick()}>Submit</button>
           }
         </form>
@@ -73,7 +76,6 @@ class Form extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("afzal", state);
   return {
     formData: state,
   };
